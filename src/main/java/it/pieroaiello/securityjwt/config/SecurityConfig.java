@@ -33,21 +33,42 @@ public class SecurityConfig {
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
+    /**
+     *
+     * @param auth
+     * @throws Exception
+     */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
+    /**
+     *
+     * @return
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     *
+     * @param authenticationConfiguration
+     * @return
+     * @throws Exception
+     */
     @Bean
     public AuthenticationManager authenticationManagerBean(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+    /**
+     *
+     * @param http
+     * @return
+     * @throws Exception
+     */
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeHttpRequests((auth) ->

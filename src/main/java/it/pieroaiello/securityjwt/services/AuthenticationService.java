@@ -32,6 +32,12 @@ public class AuthenticationService {
     @Autowired
     private SecurityUserDetailsService securityUserDetailsService;
 
+    /**
+     *
+     * @param authenticationRequest
+     * @return
+     * @throws UnauthorizedException
+     */
     public ResponseEntity<?> createAuthenticationToken(AuthenticationModel authenticationRequest) throws UnauthorizedException {
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
         try {
@@ -47,6 +53,12 @@ public class AuthenticationService {
     }
 
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @throws UnauthorizedException
+     */
     private void authenticate(String username, String password) throws  UnauthorizedException {
         log.debug("Start Autentication");
         try {

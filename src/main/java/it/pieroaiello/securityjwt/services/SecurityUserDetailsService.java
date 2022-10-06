@@ -26,6 +26,12 @@ public class SecurityUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     *
+     * @param username
+     * @return
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try{
@@ -36,6 +42,11 @@ public class SecurityUserDetailsService implements UserDetailsService {
         }
     }
 
+    /**
+     *
+     * @param username
+     * @return
+     */
     private Collection<? extends GrantedAuthority> getAuthorities(String username) {
         List<GrantedAuthority> authorities = new ArrayList<>();
         UserEntity user = userRepository.findByUsername(username);
@@ -43,7 +54,11 @@ public class SecurityUserDetailsService implements UserDetailsService {
         return authorities;
     }
 
-
+    /**
+     *
+     * @param role
+     * @return
+     */
     private String checkGrant(Integer role){
         switch (role){
             case 0:

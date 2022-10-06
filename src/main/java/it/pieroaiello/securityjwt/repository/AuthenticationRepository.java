@@ -9,6 +9,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AuthenticationRepository extends CrudRepository<AutenticationEntity, Long> {
 
+    /**
+     *
+     * @param username
+     * @return
+     */
     @Query(value = "SELECT a FROM AutenticationEntity a WHERE a.username = :username")
     AutenticationEntity findByUsername(@Param("username") String username);
 }
