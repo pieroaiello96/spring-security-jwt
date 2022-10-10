@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface AuthenticationRepository extends CrudRepository<AutenticationEntity, Long> {
 
     /**
+     * Query for find user by username on 'access' table
      *
      * @param username
      * @return

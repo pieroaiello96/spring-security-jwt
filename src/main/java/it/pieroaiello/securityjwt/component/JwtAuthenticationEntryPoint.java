@@ -12,6 +12,7 @@ import java.io.IOException;
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     /**
+     * Override method for unauthroized error
      *
      * @param request
      * @param response

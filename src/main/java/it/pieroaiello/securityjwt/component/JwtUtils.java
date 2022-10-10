@@ -3,7 +3,6 @@ package it.pieroaiello.securityjwt.component;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import it.pieroaiello.securityjwt.entities.UserEntity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -90,18 +89,22 @@ public class JwtUtils {
     }
 
     /**
+     * Method for add custom claims
+     *
+     * Ex. String token = generateToken(userDetails, user);
      *
      * @param userDetails
-     * @param user
+     * @param object
      * @return
      */
-    public String generateToken(UserDetails userDetails, UserEntity user) {
+    public String generateToken(UserDetails userDetails, Object object) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("user", user );
+        claims.put("custom", object );
         return doGenerateToken(claims, userDetails.getUsername());
     }
 
     /**
+     * Private method for generate JWT token
      *
      * @param claims
      * @param subject
@@ -114,6 +117,9 @@ public class JwtUtils {
     }
 
     /**
+     * Method for tocket validation
+     *
+     * Ex. Boolean isValid = validateToken(token, userDetails);
      *
      * @param token
      * @param userDetails

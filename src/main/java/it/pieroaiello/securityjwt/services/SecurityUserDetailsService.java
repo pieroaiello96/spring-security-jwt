@@ -20,13 +20,20 @@ import java.util.List;
 @Service
 public class SecurityUserDetailsService implements UserDetailsService {
 
+    /**
+     * Autowired authentication repository for authentication with database
+     */
     @Autowired
     private AuthenticationRepository authenticationRepository;
 
+    /**
+     * Autowired user repostiory for query operation with user
+     */
     @Autowired
     private UserRepository userRepository;
 
     /**
+     * Override method to load a user by username
      *
      * @param username
      * @return
@@ -43,6 +50,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
     }
 
     /**
+     * Private method for get all granted authorities
      *
      * @param username
      * @return
@@ -55,6 +63,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
     }
 
     /**
+     * Get grant by User role
      *
      * @param role
      * @return

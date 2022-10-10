@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends CrudRepository<UserEntity, Long>{
 
     /**
+     * Query for find user by username in 'user' table
      *
      * @param username
      * @return

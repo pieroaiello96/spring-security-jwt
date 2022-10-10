@@ -24,16 +24,27 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
+
+    /**
+     * Autowired for security user services
+     */
     @Autowired
     private UserDetailsService userDetailsService;
 
+    /**
+     * Autowired methods for JWT authentication entry poiny
+     */
     @Autowired
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
+    /**
+     * Autowired methods for JWT reqeust filter
+     */
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
     /**
+     * Autowired method for global configuration
      *
      * @param auth
      * @throws Exception
@@ -44,6 +55,7 @@ public class SecurityConfig {
     }
 
     /**
+     * Method for password encoder
      *
      * @return
      */
@@ -53,6 +65,7 @@ public class SecurityConfig {
     }
 
     /**
+     * Method to get authentication manager bean
      *
      * @param authenticationConfiguration
      * @return
@@ -64,6 +77,7 @@ public class SecurityConfig {
     }
 
     /**
+     * Method for configure http security
      *
      * @param http
      * @return

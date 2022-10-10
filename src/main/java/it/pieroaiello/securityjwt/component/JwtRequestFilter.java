@@ -21,13 +21,20 @@ import java.io.IOException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
+    /**
+     * Autowirted for JWT token utils
+     */
     @Autowired
     private JwtUtils jwtTokenUtil;
 
+    /**
+     * Autowired for security user services
+     */
     @Autowired
     private SecurityUserDetailsService userDetailsService;
 
     /**
+     * Override method for Internal filter
      *
      * @param request
      * @param response

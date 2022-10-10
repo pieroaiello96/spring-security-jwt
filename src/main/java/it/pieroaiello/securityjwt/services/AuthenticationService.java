@@ -20,19 +20,32 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class AuthenticationService {
 
+    /**
+     * Authowired authentication manager
+     */
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    /**
+     * Autowirted for JWT token utils
+     */
     @Autowired
     private JwtUtils jwtUtils;
 
+    /**
+     * Autowired user repostiory for query operation with user
+     */
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * Autowired for security user services
+     */
     @Autowired
     private SecurityUserDetailsService securityUserDetailsService;
 
     /**
+     * Public method for create authentication token
      *
      * @param authenticationRequest
      * @return
@@ -54,6 +67,7 @@ public class AuthenticationService {
 
 
     /**
+     * Private method to authenticate an user
      *
      * @param username
      * @param password
